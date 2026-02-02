@@ -4,10 +4,84 @@
   <meta charset="UTF-8">
   <title>ニュース｜日本天満党</title>
   <meta name="robots" content="noindex, nofollow">
+  <style>
+    /* 全体設定 */
+    body {
+      font-family: 'Yu Gothic', 'Meiryo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f28b82; /* 柔らかい赤 */
+      color: #fff;
+    }
+
+    /* ナビ固定 */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0.7);
+      padding: 10px;
+      text-align: center;
+      z-index: 1000;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ページ上部スペース */
+    main {
+      padding: 80px 20px 20px 20px; /* ナビ下スペース */
+      max-width: 700px;
+      margin: auto;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #fff;
+      margin: 20px 0;
+    }
+
+    /* 記事デザイン */
+    article {
+      background-color: rgba(0,0,0,0.3);
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s forwards;
+    }
+
+    /* 記事順アニメーション */
+    article:nth-child(1) { animation-delay: 0.2s; }
+    article:nth-child(2) { animation-delay: 0.5s; }
+    article:nth-child(3) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #000;
+    }
+
+    /* スマホ対応 */
+    @media screen and (max-width: 600px) {
+      nav { font-size: 14px; }
+      main { padding: 100px 10px 20px 10px; }
+    }
+  </style>
 </head>
 <body>
-
-<h1>ニュース</h1>
 
 <nav>
   <a href="index.html">トップ</a> |
@@ -18,16 +92,16 @@
   <a href="calendar.html">活動予定</a>
 </nav>
 
-<hr>
-
 <main>
+  <h1>ニュース</h1>
+
   <article>
     <h2>公式サイトを公開しました</h2>
     <p>2026.XX.XX</p>
     <p>日本天満党の公式サイト（非公式）を公開しました。</p>
   </article>
 
-   <article>
+  <article>
     <h2>蛸議院選挙に向けた街頭演説の実施</h2>
     <p>2026.01.29</p>
     <p>兵庫県、岡山県の各所にて党首による演説を行いました。</p>
