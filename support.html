@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>党員・サポーター｜日本天満党</title>
   <meta name="robots" content="noindex, nofollow">
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+    #message { margin-top: 20px; font-weight: bold; color: green; }
+  </style>
 </head>
 <body>
 
@@ -33,9 +38,11 @@
   </ul>
 
   <h2>入会手続き（演出）</h2>
-  <p>
-    下記の文を心の中で読み上げてください。
-  </p>
+  <p>下記のボタンを押して、擬似入会を体験してください。</p>
+
+  <button id="joinBtn">入会する</button>
+
+  <div id="message"></div>
 
   <blockquote>
     私は日本天満党の理念に共感し、<br>
@@ -52,6 +59,25 @@
 <footer>
   <small>※ 実際の入会・金銭のやり取りはありません。</small>
 </footer>
+
+<script>
+  const joinBtn = document.getElementById("joinBtn");
+  const message = document.getElementById("message");
+
+  const titles = [
+    "天満サポーター M.天満",
+    "天満サポーター M.鎮平",
+    "天満サポーター C.マックス",
+    "天満サポーター Y.Y",
+    "天満サポーター ゆず"
+  ];
+
+  joinBtn.addEventListener("click", () => {
+    const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+    message.textContent = `おめでとう！あなたは今日から ${randomTitle} です！`;
+    joinBtn.disabled = true; // 連打防止
+  });
+</script>
 
 </body>
 </html>
