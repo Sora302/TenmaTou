@@ -4,15 +4,9 @@
   <meta charset="UTF-8">
   <title>党員・サポーター｜日本天満党</title>
   <meta name="robots" content="noindex, nofollow">
-  <style>
-    body { font-family: sans-serif; padding: 20px; }
-    button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin-top: 10px; }
-    #message { margin-top: 20px; font-weight: bold; color: green; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<h1>党員・サポーターのご案内</h1>
 
 <nav>
   <a href="index.html">トップ</a> |
@@ -23,13 +17,11 @@
   <a href="calendar.html">活動予定</a>
 </nav>
 
-<hr>
-
 <main>
+  <h1>党員・サポーターのご案内</h1>
+
   <h2>天満サポーターとは</h2>
-  <p>
-    日本天満党の理念に共感し、静かにシュルシュルと見守る存在です。
-  </p>
+  <p>日本天満党の理念に共感し、静かにシュルシュルと見守る存在です。</p>
 
   <h2>入会条件</h2>
   <ul>
@@ -41,17 +33,12 @@
   <p>下記のボタンを押して、擬似入会を体験してください。</p>
 
   <button id="joinBtn">入会する</button>
-
   <div id="message"></div>
 
   <blockquote>
     私は日本天満党の理念に共感し、<br>
     天満サポーターとしてシュルシュルと参加します。
   </blockquote>
-
-  <p>
-    以上で入会は完了です。
-  </p>
 </main>
 
 <hr>
@@ -61,22 +48,22 @@
 </footer>
 
 <script>
-  const joinBtn = document.getElementById("joinBtn");
-  const message = document.getElementById("message");
+const joinBtn = document.getElementById("joinBtn");
+const message = document.getElementById("message");
 
-  const titles = [
-    "天満サポーター M.天満",
-    "天満サポーター M.鎮平",
-    "天満サポーター C.マックス",
-    "天満サポーター Y.Y",
-    "天満サポーター ゆず"
-  ];
+const titles = [
+  "天満サポーター M.天満",
+  "天満サポーター T.某",
+  "天満サポーター K.？？？",
+  "天満サポーター S.幻",
+  "天満サポーター N.未定"
+];
 
-  joinBtn.addEventListener("click", () => {
-    const randomTitle = titles[Math.floor(Math.random() * titles.length)];
-    message.textContent = `おめでとう！あなたは今日から ${randomTitle} です！`;
-    joinBtn.disabled = true; // 連打防止
-  });
+joinBtn.addEventListener("click", () => {
+  const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+  message.textContent = `おめでとう！あなたは今日から ${randomTitle} です！`;
+  joinBtn.disabled = true;
+});
 </script>
 
 </body>
