@@ -5,6 +5,57 @@
 <title>党員・サポーター｜日本天満党</title>
 <link rel="stylesheet" href="style.css">
 <meta name="robots" content="noindex,nofollow">
+<style>
+.plan-selection, .plan-details, .membership-complete {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #ff6f61;
+  border-radius: 8px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.plan-selection.active, .plan-details.active, .membership-complete.active {
+  display: block;
+}
+
+.button-large {
+  padding: 15px 35px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: #ff4c3b;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.button-large:hover {
+  background: #ff1f0f;
+  transform: scale(1.05);
+}
+
+.plan-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.plan-btn:hover {
+  transform: scale(1.05);
+  background-color: #ff2b18;
+}
+
+/* サポーター番号表示スタイル */
+.membership-complete h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.membership-complete p {
+  font-size: 1.1rem;
+}
+</style>
 </head>
 <body>
 <nav>
@@ -19,22 +70,106 @@
 <div class="hero">
   <h1>私たちと一緒に、蛸烏と共に歩む日本の未来を切りひらきませんか？</h1>
   <p>サポーターを募集中です！</p>
-  <button class="button-large" onclick="alert('おめでとうございます！天満サポーターに入会しました。')">入会する</button>
+  <button class="button-large" onclick="showPlans()">入会する</button>
 </div>
 
 <main class="section">
-  <div class="news-card">
-    <h2>天満サポーター特典（例）</h2>
-    <ul>
-      <li>メールマガジン（月1回程度）</li>
-      <li>限定イベント情報</li>
-      <li>党公式ニュースの先行配信</li>
-    </ul>
+  <!-- プラン選択 -->
+  <div class="plan-selection" id="planSelection">
+    <h2>サポータープランを選んでください</h2>
+    <button class="plan-btn" onclick="showPlanDetails('basic')">ベーシックプラン</button>
+    <button class="plan-btn" onclick="showPlanDetails('standard')">スタンダードプラン</button>
+    <button class="plan-btn" onclick="showPlanDetails('premium')">プレミアムプラン</button>
+    <button class="plan-btn" onclick="showPlanDetails('platinum')">プラチナプラン</button>
+  </div>
+
+  <!-- プラン詳細 -->
+  <div class="plan-details" id="planDetails">
+    <h2 id="planTitle"></h2>
+    <ul id="planDesc"></ul>
+    <button class="button-large" onclick="completeMembership()">このプランで入会する</button>
+  </div>
+
+  <!-- 入会完了表示 -->
+  <div class="membership-complete" id="membershipComplete">
+    <h2>ご入会ありがとうございます！</h2>
+    <p id="supporterNumber"></p>
+    <p id="planNumber"></p>
+    <button class="button-large" onclick="resetMembership()">トップに戻る</button>
   </div>
 </main>
 
 <footer>
   <small>※ 実際の入会・金銭はありません。</small>
 </footer>
+
+<script>
+const plans = {
+  basic: {
+    title: "ベーシックプラン",
+    desc: [
+      "党の記者会見や号外等についてのメールマガジンを配信（月1回程度）"
+    ]
+  },
+  standard: {
+    title: "スタンダードプラン",
+    desc: [
+      "ベーシックプランの内容に加え、限定イベント情報の配信",
+      "党公式ニュースの先行配信"
+    ]
+  },
+  premium: {
+    title: "プレミアムプラン",
+    desc: [
+      "スタンダードプランの内容に加え、限定オンラインミーティング参加権",
+      "特別記念グッズの抽選応募権"
+    ]
+  },
+  platinum: {
+    title: "プラチナプラン",
+    desc: [
+      "プレミアムプランの内容に加え、党首との特別交流イベント参加権",
+      "オリジナル限定グッズの提供"
+    ]
+  }
+};
+
+function showPlans() {
+  document.getElementById("planSelection").classList.add("active");
+  document.getElementById("planDetails").classList.remove("active");
+  document.getElementById("membershipComplete").classList.remove("active");
+}
+
+function showPlanDetails(planKey) {
+  const plan = plans[planKey];
+  document.getElementById("planTitle").textContent = plan.title;
+  const ul = document.getElementById("planDesc");
+  ul.innerHTML = "";
+  plan.desc.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    ul.appendChild(li);
+  });
+  document.getElementById("planDetails").classList.add("active");
+}
+
+function completeMembership() {
+  // サポーター番号とプラン番号をランダム生成
+  const supporterNo = Math.floor(Math.random() * 9000) + 1000; // 1000〜9999
+  const planNo = Math.floor(Math.random() * 100) + 1; // 1〜100
+  document.getElementById("supporterNumber").textContent = `あなたのサポーター番号: ${supporterNo}`;
+  document.getElementById("planNumber").textContent = `プラン番号: ${planNo}`;
+
+  document.getElementById("planSelection").classList.remove("active");
+  document.getElementById("planDetails").classList.remove("active");
+  document.getElementById("membershipComplete").classList.add("active");
+}
+
+function resetMembership() {
+  document.getElementById("membershipComplete").classList.remove("active");
+  document.getElementById("planSelection").classList.remove("active");
+  document.getElementById("planDetails").classList.remove("active");
+}
+</script>
 </body>
 </html>
