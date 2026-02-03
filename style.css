@@ -1,99 +1,133 @@
-/* ===== 全体設定 ===== */
+/* 共通フォント・背景・余白 */
 body {
+  font-family: 'Yu Gothic', 'メイリオ', sans-serif;
+  background-color: #f28b82; /* 柔らかい赤 */
+  color: #000;
   margin: 0;
-  font-family: "Noto Sans JP", sans-serif;
-  background-color: #FF6B6B;
-  color: #fff;
-  line-height: 1.6;
+  padding: 0;
 }
 
-/* ===== ナビゲーション ===== */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
 nav {
   position: sticky;
   top: 0;
-  background-color: rgba(0,0,0,0.85);
+  background-color: rgba(255,255,255,0.9);
   padding: 10px 20px;
-  text-align: center;
-  z-index: 1000;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 nav a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 10px;
+  margin-right: 12px;
   font-weight: bold;
-  transition: color 0.3s, transform 0.2s;
 }
 
-nav a:hover {
-  color: #000;
-  transform: scale(1.1);
+h1, h2, h3 {
+  margin: 0 0 10px 0;
 }
 
-/* ===== 見出し ===== */
-h1, h2 {
-  font-weight: bold;
-  color: #000;
+hr {
+  border: none;
+  border-top: 2px solid rgba(0,0,0,0.2);
+  margin: 20px 0;
+}
+
+/* ヒーロー見出し */
+.hero {
+  background-color: rgba(0,0,0,0.1);
+  padding: 40px 20px;
+  border-radius: 10px;
   text-align: center;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
+  margin: 20px;
 }
 
-/* ===== メインコンテンツ ===== */
-main {
-  padding: 5% 5%;
-  max-width: 800px;
-  margin: auto;
+.hero h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-/* ===== ニュース・カレンダーのカード風 ===== */
-article, ul li {
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  animation: fadeSlide 0.8s forwards;
-  margin-bottom: 20px;
-  background-color: rgba(255,255,255,0.1); /* 半透明カード風 */
-  padding: 15px;
-  border-radius: 8px;
-  transition: transform 0.3s, background-color 0.3s;
+.hero p {
+  font-size: 1.2em;
 }
 
-article:hover, ul li:hover {
-  transform: translateY(-5px) scale(1.02);
+/* セクションブロック */
+.section {
+  background-color: rgba(255,255,255,0.15);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* ニュースカード */
+.news-card, .calendar-card {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(255,255,255,0.2);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
-/* アニメーションの遅延設定 */
-article:nth-child(1), ul li:nth-child(1) { animation-delay: 0.1s; }
-article:nth-child(2), ul li:nth-child(2) { animation-delay: 0.3s; }
-article:nth-child(3), ul li:nth-child(3) { animation-delay: 0.5s; }
-article:nth-child(4), ul li:nth-child(4) { animation-delay: 0.7s; }
-
-@keyframes fadeSlide {
-  to { opacity: 1; transform: translateY(0) scale(1); }
+.news-card h3, .calendar-card h3 {
+  margin-bottom: 5px;
 }
 
-/* ===== フッター ===== */
+.news-card p, .calendar-card p {
+  margin: 0 0 5px 0;
+}
+
+/* サポーター入会ボタン */
+.button-large {
+  display: inline-block;
+  background: #fff;
+  color: #f28b82;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 15px;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.button-large:hover {
+  background-color: #ffdcdc;
+  transform: translateY(-2px);
+}
+
+/* ボックスリンク */
+.box-link {
+  display: block;
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.box-link:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* フッター */
 footer {
   text-align: center;
-  padding: 10px;
-  background-color: rgba(0,0,0,0.85);
+  padding: 15px;
   font-size: 0.9em;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  color: #333;
 }
 
-/* ===== レスポンシブ調整: スマホ用 ===== */
-@media (max-width: 600px) {
-  main {
-    padding: 10px;
-  }
-  nav {
-    padding: 8px 10px;
-  }
-  nav a {
-    margin: 0 5px;
-  }
-  article, ul li {
-    margin-bottom: 15px;
+/* レスポンシブ */
+@media (min-width: 768px) {
+  .news-card, .calendar-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
