@@ -11,7 +11,7 @@ body {
 nav {
   position: sticky;
   top: 0;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.85);
   padding: 10px 20px;
   text-align: center;
   z-index: 1000;
@@ -22,11 +22,12 @@ nav a {
   text-decoration: none;
   margin: 0 10px;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.2s;
 }
 
 nav a:hover {
   color: #000;
+  transform: scale(1.1);
 }
 
 /* ===== 見出し ===== */
@@ -45,12 +46,21 @@ main {
   margin: auto;
 }
 
-/* ===== ニュース・カレンダーのアニメーション ===== */
+/* ===== ニュース・カレンダーのカード風 ===== */
 article, ul li {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s forwards;
+  transform: translateY(20px) scale(0.95);
+  animation: fadeSlide 0.8s forwards;
   margin-bottom: 20px;
+  background-color: rgba(255,255,255,0.1); /* 半透明カード風 */
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+article:hover, ul li:hover {
+  transform: translateY(-5px) scale(1.02);
+  background-color: rgba(255,255,255,0.2);
 }
 
 /* アニメーションの遅延設定 */
@@ -59,30 +69,31 @@ article:nth-child(2), ul li:nth-child(2) { animation-delay: 0.3s; }
 article:nth-child(3), ul li:nth-child(3) { animation-delay: 0.5s; }
 article:nth-child(4), ul li:nth-child(4) { animation-delay: 0.7s; }
 
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeSlide {
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* ===== フッター ===== */
 footer {
   text-align: center;
   padding: 10px;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.85);
   font-size: 0.9em;
+  border-top: 1px solid rgba(255,255,255,0.2);
 }
 
 /* ===== レスポンシブ調整: スマホ用 ===== */
 @media (max-width: 600px) {
   main {
-    padding: 10px; /* 余白をスマホ向けに狭める */
+    padding: 10px;
   }
   nav {
     padding: 8px 10px;
   }
   nav a {
-    margin: 0 5px; /* リンク間隔をスマホ用に狭める */
+    margin: 0 5px;
   }
   article, ul li {
-    margin-bottom: 15px; /* スマホで間隔を少し狭く */
+    margin-bottom: 15px;
   }
 }
