@@ -5,6 +5,7 @@ body {
   color: #000;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
 a {
@@ -30,10 +31,11 @@ nav {
   padding: 10px 20px;
   z-index: 100;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 nav a {
-  margin-right: 12px;
+  margin: 0 10px;
   font-weight: bold;
   color: #000;
 }
@@ -41,7 +43,7 @@ nav a {
 /* ------------------ ヒーロー見出し ------------------ */
 .hero {
   background-color: rgba(0,0,0,0.1);
-  padding: 40px 20px;
+  padding: 30px 15px;
   border-radius: 10px;
   text-align: center;
   margin: 20px;
@@ -51,13 +53,13 @@ nav a {
 }
 
 .hero h1 {
-  font-size: 2em;
+  font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 1.2em;
+  font-size: 1.1rem;
 }
 
 @keyframes fadeInUp {
@@ -97,8 +99,8 @@ nav a {
   display: inline-block;
   background: #fff;
   color: #f28b82;
-  padding: 15px 30px;
-  font-size: 1.2em;
+  padding: 14px 28px;
+  font-size: 1.1em;
   font-weight: bold;
   border-radius: 15px;
   margin: 20px 0;
@@ -137,9 +139,39 @@ footer {
 
 /* ------------------ レスポンシブ ------------------ */
 @media (min-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+  }
+  .button-large {
+    padding: 15px 30px;
+    font-size: 1.15em;
+  }
+  .news-card, .calendar-card, .policy-card, .rules-card {
+    padding: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding: 40px 20px;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1.3rem;
+  }
+  .button-large {
+    padding: 18px 35px;
+    font-size: 1.2em;
+  }
   .news-card, .calendar-card, .policy-card, .rules-card {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 25px;
   }
 }
