@@ -94,39 +94,56 @@ nav a {
   transform: translateY(-2px);
 }
 
-/* ------------------ ボタン ------------------ */
+/* ------------------ ヒーローボタン ------------------ */
 .button-large {
   display: inline-block;
-  background: #fff;
-  color: #f28b82;
-  padding: 14px 28px;
-  font-size: 1.1em;
+  background: #ff4c3b;
+  color: #fff;
+  padding: 15px 35px;
+  font-size: 1.2rem;
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: 12px;
   margin: 20px 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
   border: none;
 }
 
 .button-large:hover {
-  background-color: #ffdcdc;
-  transform: translateY(-2px);
+  background: #ff1f0f;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* ------------------ ボックスリンク ------------------ */
-.box-link {
-  display: block;
-  background: rgba(255,255,255,0.15);
+/* ------------------ プラン選択ボタン ------------------ */
+.plan-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  background-color: #ff6f61;
+  color: #fff;
+}
+
+.plan-btn:hover {
+  transform: scale(1.1);
+  background-color: #ff2b18;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+/* ------------------ プラン詳細カード ------------------ */
+.plan-details, .plan-selection {
+  background-color: #ff6f61;
   padding: 15px;
-  margin: 10px 0;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.box-link:hover {
-  background: rgba(255,255,255,0.25);
-  transform: translateY(-2px);
+.plan-details:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* ------------------ フッター ------------------ */
@@ -137,7 +154,7 @@ footer {
   color: #333;
 }
 
-/* ------------------ レスポンシブ ------------------ */
+/* ------------------ レスポンシブサイズ調整 ------------------ */
 @media (min-width: 768px) {
   .hero h1 {
     font-size: 2.2rem;
@@ -146,8 +163,8 @@ footer {
     font-size: 1.2rem;
   }
   .button-large {
-    padding: 15px 30px;
-    font-size: 1.15em;
+    padding: 18px 40px;
+    font-size: 1.25rem;
   }
   .news-card, .calendar-card, .policy-card, .rules-card {
     padding: 18px;
@@ -165,8 +182,8 @@ footer {
     font-size: 1.3rem;
   }
   .button-large {
-    padding: 18px 35px;
-    font-size: 1.2em;
+    padding: 20px 45px;
+    font-size: 1.3rem;
   }
   .news-card, .calendar-card, .policy-card, .rules-card {
     flex-direction: row;
