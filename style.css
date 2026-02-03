@@ -15,7 +15,7 @@ a {
 nav {
   position: sticky;
   top: 0;
-  background-color: rgba(255,255,255,0.9);
+  background-color: #fff; /* ナビ白背景 */
   padding: 10px 20px;
   z-index: 100;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -24,6 +24,7 @@ nav {
 nav a {
   margin-right: 12px;
   font-weight: bold;
+  color: #000; /* ナビ文字は黒 */
 }
 
 h1, h2, h3 {
@@ -63,22 +64,14 @@ hr {
   border-radius: 10px;
 }
 
-/* ニュースカード */
-.news-card, .calendar-card {
+/* カード共通 */
+.news-card, .calendar-card, .policy-card, .rules-card {
   display: flex;
   flex-direction: column;
   background-color: rgba(255,255,255,0.2);
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 15px;
-}
-
-.news-card h3, .calendar-card h3 {
-  margin-bottom: 5px;
-}
-
-.news-card p, .calendar-card p {
-  margin: 0 0 5px 0;
 }
 
 /* サポーター入会ボタン */
@@ -125,7 +118,7 @@ footer {
 
 /* レスポンシブ */
 @media (min-width: 768px) {
-  .news-card, .calendar-card {
+  .news-card, .calendar-card, .policy-card, .rules-card {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
