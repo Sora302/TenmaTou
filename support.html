@@ -1,10 +1,122 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>党員・サポーター｜日本天満党</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>党員・サポーター｜日本天満党</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===== 全体設定 ===== */
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: #FF6B6B;
+  color: #fff;
+  line-height: 1.6;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* ===== ナビゲーション ===== */
+nav {
+  position: sticky;
+  top: 0;
+  background-color: rgba(0,0,0,0.85);
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* ===== キャッチコピー ===== */
+#intro {
+  margin: 40px 20px 60px;
+  font-size: 1.2rem;
+}
+
+/* ===== ボタン共通スタイル ===== */
+button {
+  background: linear-gradient(135deg, #FF6B6B, #FF8C6B);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: bold;
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin: 10px 0;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+}
+
+/* ===== 画面切替 ===== */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* ===== プランカード ===== */
+.plan-card {
+  background-color: rgba(255,255,255,0.1);
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 300px;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* ===== モーダル詳細 ===== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0,0,0,0.9);
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 300px;
+  color: #fff;
+  z-index: 2000;
+}
+
+.modal button {
+  margin-top: 15px;
+}
+
+/* ===== フッター ===== */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.85);
+  font-size: 0.9em;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ===== レスポンシブ ===== */
+@media(max-width:600px){
+  #intro { margin: 30px 15px 40px; font-size: 1rem; }
+  button { font-size: 1rem; padding: 12px 24px; }
+  .plan-card { width: 90%; }
+}
+</style>
 </head>
 <body>
 
@@ -17,52 +129,100 @@
   <a href="calendar.html">活動予定</a>
 </nav>
 
-<main>
-  <h1>党員・サポーターのご案内</h1>
+<!-- ===== キャッチコピー ===== -->
+<div id="intro">
+  私たちと一緒に、蛸烏と共に歩む日本の未来を切り拓いていきませんか？<br>
+  サポーターを募集中です！
+</div>
 
-  <h2>天満サポーターとは</h2>
-  <p>日本天満党の理念に共感し、静かにシュルシュルと見守る存在です。</p>
-
-  <h2>入会条件</h2>
-  <ul>
-    <li>蛸烏神への感謝を怠らないこと</li>
-    <li>一日一回厳島神社へのお参り</li>
-  </ul>
-
-  <h2>入会手続き（演出）</h2>
-  <p>下記のボタンを押して、擬似入会を体験してください。</p>
-
+<!-- ===== スクリーン1: 入会ボタン ===== -->
+<div id="screen1" class="screen active">
   <button id="joinBtn">入会する</button>
-  <div id="message"></div>
+</div>
 
-  <blockquote>
-    私は日本天満党の理念に共感し、<br>
-    天満サポーターとしてシュルシュルと参加します。
-  </blockquote>
-</main>
+<!-- ===== スクリーン2: プラン選択 ===== -->
+<div id="screen2" class="screen">
+  <div class="plan-card">
+    <h3>ベーシックプラン</h3>
+    <button class="detailBtn" data-plan="ベーシック">詳細を見る</button>
+    <button class="selectBtn" data-plan="ベーシック">このプランに入会</button>
+  </div>
+  <div class="plan-card">
+    <h3>スタンダードプラン</h3>
+    <button class="detailBtn" data-plan="スタンダード">詳細を見る</button>
+    <button class="selectBtn" data-plan="スタンダード">このプランに入会</button>
+  </div>
+  <div class="plan-card">
+    <h3>プレミアムプラン</h3>
+    <button class="detailBtn" data-plan="プレミアム">詳細を見る</button>
+    <button class="selectBtn" data-plan="プレミアム">このプランに入会</button>
+  </div>
+  <div class="plan-card">
+    <h3>プラチナプラン</h3>
+    <button class="detailBtn" data-plan="プラチナ">詳細を見る</button>
+    <button class="selectBtn" data-plan="プラチナ">このプランに入会</button>
+  </div>
+</div>
 
-<hr>
+<!-- ===== スクリーン3: 入会完了 ===== -->
+<div id="screen3" class="screen">
+  <h2 id="finalMessage"></h2>
+</div>
+
+<!-- ===== モーダル ===== -->
+<div id="modal" class="modal">
+  <div id="modalText"></div>
+  <button id="closeModal">閉じる</button>
+</div>
 
 <footer>
   <small>※ 実際の入会・金銭のやり取りはありません。</small>
 </footer>
 
 <script>
-const joinBtn = document.getElementById("joinBtn");
-const message = document.getElementById("message");
+// ===== 初期入会ボタン =====
+const joinBtn = document.getElementById('joinBtn');
+const screen1 = document.getElementById('screen1');
+const screen2 = document.getElementById('screen2');
+const screen3 = document.getElementById('screen3');
+const finalMessage = document.getElementById('finalMessage');
 
-const titles = [
-  "天満サポーター M.天満",
-  "天満サポーター T.某",
-  "天満サポーター K.？？？",
-  "天満サポーター S.幻",
-  "天満サポーター N.未定"
-];
+joinBtn.addEventListener('click', () => {
+  screen1.classList.remove('active');
+  screen2.classList.add('active');
+});
 
-joinBtn.addEventListener("click", () => {
-  const randomTitle = titles[Math.floor(Math.random() * titles.length)];
-  message.textContent = `おめでとう！あなたは今日から ${randomTitle} です！`;
-  joinBtn.disabled = true;
+// ===== プラン詳細モーダル =====
+const modal = document.getElementById('modal');
+const modalText = document.getElementById('modalText');
+const closeModal = document.getElementById('closeModal');
+
+document.querySelectorAll('.detailBtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const plan = btn.dataset.plan;
+    let text = '';
+    if(plan === 'ベーシック') text = '党の記者会見や号外等についてのメールマガジンを配信（月1回程度）';
+    else if(plan === 'スタンダード') text = 'ベーシック特典＋党首からのお礼メッセージ、限定壁紙ダウンロード';
+    else if(plan === 'プレミアム') text = 'スタンダード特典＋限定動画視聴権、プラン限定称号付与';
+    else if(plan === 'プラチナ') text = 'プレミアム特典＋仮想オンライン会合参加、スーパーサポーター特別扱い';
+    modalText.textContent = text;
+    modal.style.display = 'block';
+  });
+});
+
+closeModal.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// ===== プラン選択 =====
+document.querySelectorAll('.selectBtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const plan = btn.dataset.plan;
+    const number = Math.floor(Math.random() * 9000) + 1000; // No.1000〜9999
+    finalMessage.textContent = `おめでとうございます！あなたは天満党サポーターNo.${number}（${plan}）です！`;
+    screen2.classList.remove('active');
+    screen3.classList.add('active');
+  });
 });
 </script>
 
